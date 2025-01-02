@@ -74,6 +74,38 @@ sys_sleep(void)
 int
 sys_pgaccess(void)
 {
+  uint64 start_virtual_address;
+  int total_page;
+  uint64 user_bitmask_address;
+
+  argaddr(0, &start_virtual_address);   
+  argint(1, &total_page);     
+  argaddr(2, &user_bitmask_address); 
+
+  if (start_virtual_address >= MAXVA || user_bitmask_address >= MAXVA) { 
+      return -1;
+  }
+
+  if (total_page <= 0) {
+      return -1;
+  }
+  
+  struct proc *my_proc = myproc();
+  int bitmask = 0;
+  for (int i = 0; i < total_page; i++) {
+      uint64 next_address = start_virtual_address + i * PGSIZE;
+      pte_t *pte = walk(my_proc->pagetable, next_address, 0);
+      if(pte == 0) {
+          continue;
+      }
+      if ((*pte & PTE_V) && (*pte & PTE_A)) {
+          bitmask |= (1 << i);
+          *pte &= ~PTE_A;
+      }
+  }
+  if (copyout(my_proc->pagetable, user_bitmask_address, (char *)&bitmask, sizeof(bitmask)) < 0) {
+    return -1;
+  }
   // lab pgtbl: your code here.
   return 0;
 }
