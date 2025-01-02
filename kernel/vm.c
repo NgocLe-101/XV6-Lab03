@@ -459,7 +459,7 @@ void _vmprint(pagetable_t pagetable, int level) {
       // print prefix ..
       for (int j = 0; j <= level; j++)
         printf(" ..");
-      printf("%d: pte %p pa %p", i, (void*)pte, (void*)pa);
+      printf("%d: pte %p pa %p", i, pte, pa);
             printf("\n");
       // if not leaf, print next level
       if ((pte&(PTE_R|PTE_W|PTE_X)) == 0)

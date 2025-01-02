@@ -1,0 +1,50 @@
+0x0000000021fda01b:
+Permission bits: 0x01b = 0000000000011011
+Read permission: 1
+Write permission: 0
+Execute permission: 1
+User permission: 1
+Logically contains: Vì có quyền đọc, thực thi và user nên nó có thể chứa nội dung text của chương trình
+0x0000000021fd9417
+Permission bits: 0x417 = 010000010111
+Read permission: 1
+Write permission: 1
+Execute permission: 0
+User permission: 1
+Logically contains: Vì có quyền đọc, viết và user nên nó có thể dữ liệu mà chương trình người dùng cần đọc và ghi (bộ nhớ vùng heap, stack, data)
+0x0000000021fd9007
+Permission bits: 0x007 = 000000000111
+Read permission: 1
+Write permission: 1
+Execute permission: 0
+User permission: 0
+Logically contains: Vì có quyền đọc, viết và user nên nó chứa các trapframe của chương trình
+0x0000000021fd8c17
+Permission bits: 0xc17 = 110000010111
+Read permission: 1
+Write permission: 1
+Execute permission: 0
+User permission: 1
+Logically contains: Vì có quyền đọc, viết và user nên nó có thể dữ liệu mà chương trình người dùng cần đọc và ghi (bộ nhớ vùng heap, stack, data)
+0x0000000021fdcc13
+Permission bits: 0xc13 = 110000010011
+Read permission: 1
+Write permission: 0
+Execute permission: 0
+User permission: 1
+Logically contains: Chỉ có quyền đọc và user nên nó chứa các dữ liệu chỉ đọc của chương trình
+0x0000000021fdd007
+Permission bits: 0x007 = 000000000111
+Read permission: 1
+Write permission: 1
+Execute permission: 0
+User permission: 0
+Logically contains: Vì có quyền đọc, viết và user nên nó chứa các trapframe của chương trình
+0x0000000020001c0b
+
+Permission bits: 0xc0b = 110000001011
+Read permission: 1
+Write permission: 0
+Execute permission: 1
+User permission: 0
+Logically contains: Có quyền đọc và thực thi nên nó có thể chứa các lệnh thực thi của chương trình, hoặc mã trong một thư viện nào đó, khi mà dữ liệu không thay đổi trong quá trình chạy chương trình.
